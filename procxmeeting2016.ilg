@@ -1,4 +1,6 @@
 This is makeindex, version 2.15 [TeX Live 2016] (kpathsea + Thai support).
-Scanning input file procxmeeting2016.idx...done (0 entries accepted, 0 rejected).
-Nothing written in procxmeeting2016.ind.
+Scanning input file procxmeeting2016.idx.....done (1328 entries accepted, 0 rejected).
+Sorting entries..............done (15014 comparisons).
+Generating output file procxmeeting2016.ind.....done (1057 lines written, 0 warnings).
+Output written in procxmeeting2016.ind.
 Transcript written in procxmeeting2016.ilg.

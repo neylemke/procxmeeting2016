@@ -1,3 +1,5 @@
+
+
 strlatex2 = "\\procpaper[switch=45,\[IndentingNewLine]title={`title`}, 
      author={`author`}, 
   index={`indexstr`}]\n{`file`}\n\n";
@@ -13,7 +15,8 @@ geraPoster[data_] :=
  StringTemplate[strlatex2][<|"title" -> data[[4]], 
    "author" -> data[[5]] <> "," <> data[[6]] , 
    "indexstr" -> 
-    brnames /@ StringSplit[data[[5]] <> "," <> data[[6]], ","], 
+    StringJoin[
+     brnames /@ StringSplit[data[[5]] <> "," <> data[[6]], ","]], 
    "file" -> (ToString@data[[1]] )|>]
 
 liscodsposters = {"ED", "GE", "PE", "PR", "SB", "SW", "TP"};
