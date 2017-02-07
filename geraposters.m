@@ -10,14 +10,21 @@ brnames[str_] :=
    "\\index{" <> Last[lis] <> ", " <> 
     StringTake[StringJoin[(# <> " ") & /@ lis[[1 ;; -2]]], 1 ;; -2]] <>
    "}"
-
+CapitalizeNames[str_] := 
+ StringRiffle[
+  Capitalize[
+   StringSplit[ToLowerCase[StringReplace[str, "," -> ", "]], " "]], 
+  " "]
 geraPoster[data_] := 
  StringTemplate[strlatex2][<|"title" -> data[[4]], 
-   "author" -> data[[5]] <> "," <> data[[6]] , 
+   "author" -> 
+    CapitalizeNames[data[[5]] ] <> "," <> CapitalizeNames@data[[6]] , 
    "indexstr" -> 
     StringJoin[
-     brnames /@ StringSplit[data[[5]] <> "," <> data[[6]], ","]], 
-   "file" -> (ToString@data[[1]] )|>]
+     brnames /@ 
+      StringSplit[
+       CapitalizeNames@data[[5]] <> "," <> CapitalizeNames@data[[6]], 
+       ","]], "file" -> (ToString@data[[1]] )|>]
 
 liscodsposters = {"ED", "GE", "PE", "PR", "SB", "SW", "TP"};
 liscodsfull = {"FP"};
@@ -27,7 +34,7 @@ prefix = "/Users/neylemke/Google\ \
 Drive/burocracia/ab3c/proceedings-x-meeting2016/";
 
 lisposter = 
-  Import[prefix <> "codes_poster_session_20161221_corrigido.csv", 
+  Import[prefix <> "codes_poster_session_20170206_corrigido.csv", 
    "TSV"];
 lisposter = Rest[lisposter];
 lisareas = Union[lisposter[[All, 3]]];
