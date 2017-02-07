@@ -6,14 +6,14 @@
     linkcolor=blue,urlcolor=blue}" "colorheaders=black" "colorfooters=black" "geometry={text={175truemm,226truemm},% A4 & letter
     inner=0.805in,top=29.15mm,bottom=24.5mm,footskip=9.68mm,voffset=-5mm}" "letter")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("inputenc" "utf8") ("nth" "super")))
+                     '(("fontenc" "T1") ("nth" "super")))
    (TeX-run-style-hooks
     "latex2e"
     "proctext"
     "posters"
     "confproc"
     "confproc10"
-    "inputenc"
+    "fontenc"
     "mathptmx"
     "nth"
     "titlesec"

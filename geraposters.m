@@ -1,5 +1,3 @@
-
-
 strlatex2 = "\\procpaper[switch=45,\[IndentingNewLine]title={`title`}, 
      author={`author`}, 
   index={`indexstr`}]\n{`file`}\n\n";
@@ -11,10 +9,12 @@ brnames[str_] :=
     StringTake[StringJoin[(# <> " ") & /@ lis[[1 ;; -2]]], 1 ;; -2]] <>
    "}"
 CapitalizeNames[str_] := 
- StringRiffle[
-  Capitalize[
-   StringSplit[ToLowerCase[StringReplace[str, "," -> ", "]], " "]], 
-  " "]
+ StringReplace[
+  StringRiffle[
+   Capitalize[
+    StringSplit[ToLowerCase[StringReplace[convstr@str, "," -> ", "]], 
+     " "]], " "], {" De " -> "de ", " Da " -> " da ", 
+   " Do " -> " do "}]
 geraPoster[data_] := 
  StringTemplate[strlatex2][<|"title" -> data[[4]], 
    "author" -> 
@@ -25,7 +25,8 @@ geraPoster[data_] :=
       StringSplit[
        CapitalizeNames@data[[5]] <> "," <> CapitalizeNames@data[[6]], 
        ","]], "file" -> (ToString@data[[1]] )|>]
-
+convstr[str_] := 
+ URLDecode[URLEncode[str, CharacterEncoding -> "ISO8859-1"]]
 liscodsposters = {"ED", "GE", "PE", "PR", "SB", "SW", "TP"};
 liscodsfull = {"FP"};
 
